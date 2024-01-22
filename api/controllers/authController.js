@@ -45,7 +45,7 @@ export const signin = async(req, res, next) => {
             return next(errorHandler(400, "Invalid password"));
         }
 
-        const token = jwt.sign({ id: validUser._id}, process.env.JWT_SECRET_KEY );
+        const token = jwt.sign({ id: validUser._id}, process.env.JWT_SECRET_KEY );      //without expiresIn property the token is valid only till the browser is open. Once browser is closed, token will be deleted from browser.
 
         const {password: pass, ...rest} = validUser._doc;
         res.status(200)
