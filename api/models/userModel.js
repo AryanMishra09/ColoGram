@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    profilePicture: {
+        type: String,
+        default: "https://static.vecteezy.com/system/resources/previews/026/266/484/non_2x/default-avatar-profile-icon-social-media-user-photo-image-vector.jpg",
+    }
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);

@@ -1,5 +1,5 @@
 import express from 'express';
-import { signin, signup } from '../controllers/authController.js';
+import { google, signin, signup } from '../controllers/authController.js';
 
 const router = express.Router();
 
@@ -8,5 +8,8 @@ router.post('/signup', signup);
 
 // for signin a user : (/api/auth/signin):
 router.post('/signin', signin);
+
+// for signin//signup a user through google popup : (/api/auth/google):
+router.post('/google', google);
 
 export default router;
