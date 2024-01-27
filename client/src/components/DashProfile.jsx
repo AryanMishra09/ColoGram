@@ -103,6 +103,7 @@ export default function DashProfile() {
             setUpdateUserError(data.message);
           }else{
             dispatch(updateSuccess(data));
+            setImageFileUploadProgress(false);
             setUpdateUserSuccess("User Profile Updated Successfully");
           }
         } catch (error) {
