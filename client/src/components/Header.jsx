@@ -4,6 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { toogleTheme } from '../redux/theme/themeSlice';
+import { signoutSuccess } from '../redux/user/userSlice';
 
 export default function Header() {
 
@@ -14,6 +15,22 @@ export default function Header() {
     const dispatch = useDispatch();
 
     const path = useLocation().pathname;
+
+    const handleSignout = async () => {
+        try {
+          const res = await fetch('/api/user/signout', {
+            method: 'POST',
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            console.log(data.message);
+          } else {
+            dispatch(signoutSuccess());
+          }
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
 
     return (
         <Navbar className='border-b-2' style={{ padding: '20px 80px' }} >
@@ -52,7 +69,7 @@ export default function Header() {
                     <Dropdown
                         arrowIcon={false}
                         inline
-                        className='rounded-xl shadow-2xl' 
+                        className='rounded-lg shadow-2xl' 
                         label={ 
                             <Avatar  
                                 alt='User' 
@@ -70,7 +87,7 @@ export default function Header() {
                             </Dropdown.Item>
                         </Link>
                         <Dropdown.Divider />
-                        <Dropdown.Item>
+                        <Dropdown.Item onClick={handleSignout}>
                             Sign Out
                         </Dropdown.Item>
                     </Dropdown>
