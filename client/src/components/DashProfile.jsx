@@ -8,6 +8,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { deleteUserFailure, deleteUserStart, deleteUserSuccess, signoutSuccess, updateFailure, updateStart, updateSuccess } from "../redux/user/userSlice";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Link } from 'react-router-dom';
 
 export default function DashProfile() {
 
@@ -16,7 +17,7 @@ export default function DashProfile() {
     const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
     const [imageFileUploading, setImageFileUploading ] = useState(false);
     const [imageFileUploadError, setImageFileUploadError] = useState(null);
-    const { currentUser, error } = useSelector((state) => state.user);
+    const { currentUser, error, loading } = useSelector((state) => state.user);
     const [updateUserError, setUpdateUserError] = useState(null);
     const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -176,7 +177,7 @@ export default function DashProfile() {
                         left: 0,
                         },
                         path: {
-                        stroke: `rgba(62, 152, 199, ${
+                        stroke: `rgba(62, 152, 150, ${
                             imageFileUploadProgress / 100
                         })`,
                         },
@@ -187,7 +188,7 @@ export default function DashProfile() {
                     <img 
                         src={imageFileUrl || currentUser.profilePicture} 
                         alt="profile_pic" 
-                        className={`rounded-full w-full h-full border-8 border-[lightgray] object-cover ${imageFileUploadProgress && imageFileUploadProgress<100 && 'opacity-60'}`} 
+                        className={`rounded-full w-full h-full border-4 border-[lightgray] object-cover ${imageFileUploadProgress && imageFileUploadProgress<100 && 'opacity-60'}`} 
                     />
                 </div>
 
@@ -220,9 +221,23 @@ export default function DashProfile() {
                     onChange={handleChange}
                 />
 
-                <Button className={`disabled:${imageFileUploading}`} type="submit" gradientDuoTone='purpleToBlue' outline>
-                    Update
+                <Button disabled={loading || imageFileUploading}  className={`disabled:${imageFileUploading}`} type="submit" gradientDuoTone='purpleToBlue' outline>
+                    {(loading||imageFileUploading) ? "Loading..." : "Update"}
                 </Button>
+
+                {currentUser?.isAdmin && (
+
+                  <Link to='/create-post'>
+                    <Button 
+                      type="button"
+                      gradientDuoTone='purpleToPink'
+                      className="w-full"
+                    >
+                      Create a Post 
+                    </Button>
+                  </Link>
+                  
+                )}
 
             </form>
 
