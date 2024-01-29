@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,6 +9,8 @@ export default {
   theme: {
     extend: {},
   },
-  // eslint-disable-next-line no-undef
-  plugins: [require('flowbite/plugin'),],
+  plugins: [
+    require('flowbite/plugin'),
+    require('tailwind-scrollbar'),
+  ],
 }
