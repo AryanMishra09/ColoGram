@@ -5,6 +5,7 @@ import authRoutes from "./routes/authRoutes.js";
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoute.js';
 import postRoutes from './routes/postRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
 
 dotenv.config()
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect(process.env.MONGODB_URL)
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
+app.use('/api/comment', commentRoutes);
 
 
 app.listen(3000, () => {
