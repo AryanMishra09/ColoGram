@@ -42,7 +42,7 @@ export default function Header() {
                 Blog
             </Link>
 
-            <form >
+            <form className='w-[250px]' >
                 <TextInput
                     type='text'
                     placeholder='Search'
