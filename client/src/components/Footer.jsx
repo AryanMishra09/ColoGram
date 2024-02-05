@@ -12,11 +12,9 @@ export default function FooterComponent() {
                 
                 <div>
                 
-                    <Link to="/" className='self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white'>
-                        <span className='p-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white '>
-                            Tech
-                        </span>
-                        Blog
+                    <Link to="/" className='self-center whitespace-nowrap flex text-lg sm:text-xl font-semibold dark:text-white'>
+                        <h1 className="text-white text-2xl font-bold">Colo</h1>
+                        <span className="text-gradient text-2xl font-bold">Gram</span>
                     </Link>
                 
                 </div>
