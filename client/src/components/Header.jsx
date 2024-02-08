@@ -3,12 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { toogleTheme } from '../redux/theme/themeSlice';
+import { toggleTheme } from '../redux/theme/themeSlice.js';
 import { signoutSuccess } from '../redux/user/userSlice';
 
 export default function Header() {
 
     const {currentUser} = useSelector((state) => state.user);
+    // console.log("Header: ", currentUser);
 
     const { theme } = useSelector((state) => state.theme);
     
@@ -49,82 +50,59 @@ export default function Header() {
                 />
             </form>
 
-            <Button className='w-12 h-10 lg:hidden rounded-xl' color='gray' >
-                <AiOutlineSearch/>
+            <Button className='w-12 h-10 lg:hidden' color='gray' pill>
+        <AiOutlineSearch />
+      </Button>
+      <div className='flex gap-6 md:order-2'>
+        <Button
+          className='w-12 h-10 hidden sm:inline'
+          color='gray'
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+            {console.log('Toggle theme clicked')}
+          {theme === 'light' ? <FaMoon /> : <FaSun /> }
+        </Button>
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar alt='user' img={currentUser.profilePicture} rounded className='h-10 w-16 object-cover' />
+            }
+          >
+            <Dropdown.Header>
+              <span className='block text-sm'>@{currentUser.username}</span>
+              <span className='block text-sm font-medium truncate'>
+                {currentUser.email}
+              </span>
+            </Dropdown.Header>
+            <Link to={'/dashboard?tab=profile'}>
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to='/sign-in'>
+            <Button gradientDuoTone='purpleToBlue' outline>
+              Sign In
             </Button>
-
-            <div className='flex gap-8 md:order-2'>
-                <Button
-                    className='w-12 h-10 hidden sm:inline'
-                    color='gray'
-                    pill
-                    onClick={() => dispatch(toogleTheme())}
-                    >
-                    {theme === 'light' ?<FaMoon /> : <FaSun /> }
-                </Button>
-
-                { currentUser ? (
-                    <Dropdown
-                        arrowIcon={false}
-                        inline
-                        className='rounded-lg shadow-2xl' 
-                        label={ 
-                            <Avatar  
-                                alt='User' 
-                                img={currentUser.profilePicture} rounded 
-                            /> 
-                        }
-                    >
-                        <Dropdown.Header>
-                            <span className='block text-sm'>@{currentUser.username}</span>
-                            <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
-                        </Dropdown.Header>
-                        <Link to='/dashboard?tab=profile'>
-                            <Dropdown.Item>
-                                Profile
-                            </Dropdown.Item>
-                        </Link>
-                        <Dropdown.Divider />
-                        <Dropdown.Item onClick={handleSignout}>
-                            Sign Out
-                        </Dropdown.Item>
-                    </Dropdown>
-                ) : 
-                (
-                    <Link to='/sign-in'> 
-                        <Button gradientDuoTone='purpleToBlue' outline pill>
-                            Sign In 
-                        </Button>
-                    </Link>
-                )}
-
-                
-                <Navbar.Toggle/>
-
-            </div>
-
-            <Navbar.Collapse>
-                    
-                    <Navbar.Link className='rounded-xl shadow-2xl' active={path === "/"} as={'div'}>
-                        <Link to="/" >
-                            Home
-                        </Link>
-                    </Navbar.Link>
-                    
-                    <Navbar.Link className='rounded-xl shadow-2xl' active={path === "/about"} as={'div'}>
-                        <Link to="/about" >
-                            About
-                        </Link>
-                    </Navbar.Link>
-                    
-                    <Navbar.Link className='rounded-xl shadow-2xl' active={path === "/projects"} as={'div'}>
-                        <Link to="/projects" >
-                            Projects
-                        </Link>
-                    </Navbar.Link>
-                
-                </Navbar.Collapse>
-
-        </Navbar>
-    )
+          </Link>
+        )}
+        <Navbar.Toggle />
+      </div>
+      <Navbar.Collapse>
+        <Navbar.Link active={path === '/'} as={'div'}>
+          <Link to='/'>Home</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === '/about'} as={'div'}>
+          <Link to='/about'>About</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === '/projects'} as={'div'}>
+          <Link to='/projects'>Projects</Link>
+        </Navbar.Link>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 }
