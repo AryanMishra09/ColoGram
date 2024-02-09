@@ -1,52 +1,75 @@
-import {Avatar, Button, Dropdown, Navbar, TextInput} from 'flowbite-react';
-import { Link, useLocation } from 'react-router-dom';
-import { AiOutlineSearch } from "react-icons/ai";
-import { FaMoon, FaSun } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../redux/theme/themeSlice.js';
+import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/theme/themeSlice';
 import { signoutSuccess } from '../redux/user/userSlice';
+import { useEffect, useState } from 'react';
+
 
 export default function Header() {
 
     const {currentUser} = useSelector((state) => state.user);
-    // console.log("Header: ", currentUser);
+    console.log("Header: ", currentUser);
 
     const { theme } = useSelector((state) => state.theme);
-    
+    const [searchTerm, setSearchTerm] = useState('');
+    // console.log(searchTerm);
+    const location = useLocation();
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const path = useLocation().pathname;
 
+    useEffect(()=>{
+      setSearchTerm('');                                          // to change the searchterm based on the text entered in the URL 
+      const urlParams = new URLSearchParams(location.search);
+      const searchtermFromUrl = urlParams.get('searchTerm');
+      if(searchtermFromUrl){
+        setSearchTerm(searchtermFromUrl);
+      }
+    }, [location.search])
+
     const handleSignout = async () => {
-        try {
-          const res = await fetch('/api/user/signout', {
-            method: 'POST',
-          });
-          const data = await res.json();
-          if (!res.ok) {
-            console.log(data.message);
-          } else {
-            dispatch(signoutSuccess());
-          }
-        } catch (error) {
-          console.log(error.message);
+      try {
+        const res = await fetch('/api/user/signout', {
+          method: 'POST',
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          console.log(data.message);
+        } else {
+          dispatch(signoutSuccess());
         }
-      };
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+  
+    const handleSubmit = (e) => {                             //update the URL with the new search term
+      e.preventDefault();
+      const urlParams = new URLSearchParams(location.search);
+      urlParams.set('searchTerm', searchTerm);
+      const searchQuery = urlParams.toString();
+      navigate(`/search?${searchQuery}`);
+    };
 
     return (
-        <Navbar className='border-b-2' style={{ padding: '20px 80px' }} >
+        <Navbar className='border-b-2 px-10 py-4 md:px-[5%]' >
 
             <Link to="/" className='self-center whitespace-nowrap text-sm flex sm:text-xl font-semibold dark:text-white'>
-                <h1 className="text-white text-4xl font-bold">Colo</h1>
-                <span className="text-gradient text-4xl font-bold">Gram</span>
+                <h1 className="text-gray-500 dark:text-white text-3xl md:text-4xl font-normal md:font-bold">Colo</h1>
+                <span className="text-gradient text-3xl md:text-4xl font-normal md:font-bold">Gram</span>
             </Link>
 
-            <form >
+            <form onSubmit={handleSubmit} >
                 <TextInput
                     type='text'
                     placeholder='Search'
                     rightIcon={AiOutlineSearch} 
                     className='hidden lg:inline '
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </form>
 
