@@ -144,10 +144,10 @@ export default function Search() {
         </form>
       </div>
       <div className='w-full'>
-        <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 '>
+        <h1 className='text-3xl font-semibold sm:border-b border-gray-500 px-10 mt-5 '>
           Posts results:
         </h1>
-        <div className='p-7 flex flex-wrap gap-4'>
+        <div className='p-10 md:py-10 md:px-28 flex flex-wrap gap-10'>
           {!loading && posts.length === 0 && (
             <p className='text-xl text-gray-500'>No posts found.</p>
           )}

@@ -10,11 +10,11 @@ export default function CallToAction() {
             <p className='text-gray-500'>
                 Fall in love with the frenzy details of our college having its roots established since 1957.
             </p>
-            <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
-                <a href="https://web.mitsgwalior.in/" target='_blank' rel='noopener noreferrer'>
+            <a href="https://web.mitsgwalior.in/" target='_blank' rel='noopener noreferrer'>
+                <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none rounded-tr-none w-full'>
                     Vist Site
-                </a>
-            </Button>
+                </Button>
+            </a>
         </div>
         <div className="flex-1 py-7 pl-6 pr-0">
             <img 

@@ -2,17 +2,17 @@
 
 export default function About() {
   return (
-    <div className='min-h-screen flex items-center justify-center'>
+    <div className='min-h-screen flex mt-10 justify-center'>
       <div className='max-w-2xl mx-auto p-3 text-center'>
         <div>
           <h1 className='text-3xl font font-semibold text-center my-7'>
             About Colo<span className="text-gradient">Gram</span>
           </h1>
-          <div className='text-md text-gray-500 flex flex-col gap-6'>
+          <div className='text-md text-gray-500 text-justify flex mt-10 flex-col gap-6'>
             <p>
-              Welcome to ColoGram! This blog was created by Sahand Ghavidel
+              Welcome to ColoGram! This blog was created by Aryan Mishra
               as a personal project to share his thoughts and ideas with the
-              world. Sahand is a passionate developer who loves to write about
+              world. Aryan is a passionate developer who loves to write about
               technology, coding, and everything in between.
             </p>
 

@@ -53,19 +53,17 @@ export default function SignIn() {
   return (
     <div className="min-h-screen mt-20">
 
-      <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
+      <div className="flex p-3 max-w-[60%] mx-auto flex-col md:flex-row md:items-center gap-8">
 
         {/* div for left side  */}
         <div className="flex-1">
           
-          <Link to="/" className='text-4xl font-bold dark:text-white'>
-            <span className='p-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white '>
-              Tech
-            </span>
-              Blog
+          <Link to="/" className=' font-bold flex flex-row items-center dark:text-white'>
+            <h1 className="text-gray-500 dark:text-white text-5xl md:text-6xl font-semibold md:font-bold">Colo</h1>
+            <span className="text-gradient text-5xl md:text-6xl font-semibold md:font-bold">Gram</span>
           </Link>
 
-          <p className="text-sm mt-5">
+          <p className="text-md text-justify text-dimWhite max-w-[80%] mt-5">
             This is a Blog Website. You can sign in with your email and password or with Google.
           </p>
         

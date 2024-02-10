@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard';
 import {HiArrowCircleRight} from 'react-icons/hi';
 import { useSelector } from 'react-redux';
+import Slider from '../components/Slider';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -24,7 +25,7 @@ export default function Home() {
       className='p-3 flex flex-col max-w-5xl mx-auto min-h-screen'
     >
       <div 
-        className='flex flex-col gap-14 p-28 px-3 max-w-6xl justify-start '
+        className='flex flex-col gap-14 py-24 px-3 max-w-6xl justify-start '
       >
         <h1 
           className='flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-slate-700 dark:text-white ss:leading-[100px] leading-[75px] '
@@ -41,10 +42,8 @@ export default function Home() {
           theme === "dark" && (
             <>
               <div className="absolute z-[1] w-[10%] h-[50%] rounded-full white__gradient left-40 bottom-40" />
-            <div className="absolute z-[0] w-[40%] h-[50%] top-20 right-0 bottom-20 blue__gradient" />
-          
-            </>
-            
+              <div className="absolute z-[0] w-[40%] h-[50%] top-20 right-0 bottom-20 blue__gradient" />
+            </>  
           ) 
         }
           
@@ -56,14 +55,17 @@ export default function Home() {
           <HiArrowCircleRight />
         </Link>
       </div>
-      <div className='p-3 rounded-tl-3xl rounded-br-3xl text-center bg-amber-100 dark:bg-slate-700'>
+
+      <Slider />
+
+      <div className='p-3 mt-16 rounded-tl-3xl rounded-br-3xl text-center bg-amber-100 dark:bg-slate-700'>
         <CallToAction />
       </div>
 
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
         {posts && posts.length > 0 && (
           <div className='flex flex-col m-5 items-center gap-6'>
-            <h2 className='text-3xl border-b dark:border-gray-700 max-w-fit font-semibold text-center'>Recent Announcements</h2>
+            <h2 className='text-3xl border-b mb-5 dark:border-gray-700 max-w-fit font-semibold text-center'>Recent Announcements</h2>
             <div className='flex flex-wrap gap-4'>
               {posts.map((post) => (
                 <PostCard key={post._id} post={post} />
