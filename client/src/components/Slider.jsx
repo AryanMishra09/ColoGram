@@ -22,10 +22,10 @@ export default function Slider() {
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
         >
-            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../../public/image2.jpg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className=" rounded-lg w-[100%] h-[100%] object-contain" src="../../public/Image1.jpg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../../public/Image3.jpg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../../public/Image4.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../image2.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className=" rounded-lg w-[100%] h-[100%] object-contain" src="../Image1.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image3.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image4.jpg" alt="" /></SwiperSlide>
         </Swiper>
 
     </div>
