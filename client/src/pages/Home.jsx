@@ -9,7 +9,7 @@ import Slider from '../components/Slider';
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const {currentUser} = useSelector((state)=>state.user);
-  const { theme } = useSelector((state) => state.theme);
+  // const { theme } = useSelector((state) => state.theme);
   console.log("Home: vurrent user: ", currentUser);
 
   useEffect(() => {
@@ -39,12 +39,12 @@ export default function Home() {
         </p>
         {/* <div className="absolute z-[0] w-[40%] h-[35%] bottom-0 pink__gradient" /> */}
         {
-          theme === "dark" && (
+          
             <>
               <div className="absolute z-[1] w-[10%] h-[50%] rounded-full white__gradient left-40 bottom-40" />
               <div className="absolute z-[0] w-[40%] h-[50%] top-20 right-0 bottom-20 blue__gradient" />
             </>  
-          ) 
+          
         }
           
         <Link

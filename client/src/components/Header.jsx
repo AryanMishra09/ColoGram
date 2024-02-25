@@ -1,9 +1,9 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FaMoon, FaSun } from 'react-icons/fa';
+// import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../redux/theme/themeSlice';
+// import { toggleTheme } from '../redux/theme/themeSlice';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useEffect, useState } from 'react';
 
@@ -13,7 +13,7 @@ export default function Header() {
     const {currentUser} = useSelector((state) => state.user);
     console.log("Header: ", currentUser);
 
-    const { theme } = useSelector((state) => state.theme);
+    // const { theme } = useSelector((state) => state.theme);
     const [searchTerm, setSearchTerm] = useState('');
     // console.log(searchTerm);
     const location = useLocation();
@@ -77,7 +77,7 @@ export default function Header() {
         <AiOutlineSearch />
       </Button>
       <div className='flex gap-6 md:order-2'>
-        <Button
+        {/* <Button
           className='w-12 h-10 hidden sm:inline'
           color='gray'
           pill
@@ -85,7 +85,7 @@ export default function Header() {
         >
             {console.log('Toggle theme clicked')}
           {theme === 'light' ? <FaMoon /> : <FaSun /> }
-        </Button>
+        </Button> */}
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
@@ -122,8 +122,8 @@ export default function Header() {
         <Navbar.Link active={path === '/about'} as={'div'}>
           <Link to='/about'>About</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === '/projects'} as={'div'}>
-          <Link to='/projects'>Projects</Link>
+        <Navbar.Link active={path === '/search'} as={'div'}>
+          <Link to='/search'>Announcements</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
