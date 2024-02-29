@@ -64,7 +64,7 @@ export default function Home() {
         {posts && posts.length > 0 && (
           <div className='flex flex-col mx-auto items-center gap-6'>
             <h2 className='text-3xl border-b mt-20 mb-5 dark:border-gray-700 max-w-fit font-semibold text-center'>Recent Announcements</h2>
-            <div className='flex flex-wrap items-center justify-between gap-8'>
+            <div className='flex flex-wrap items-center justify-center gap-10'>
               {posts.map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}

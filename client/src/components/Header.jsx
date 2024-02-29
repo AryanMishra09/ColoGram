@@ -76,7 +76,7 @@ export default function Header() {
             <Button className='w-12 h-10 lg:hidden' color='gray' pill>
         <AiOutlineSearch />
       </Button>
-      <div className='flex gap-6 md:order-2'>
+      <div className='flex gap-6 md:order-2 mt-4 sm:mt-0'>
         {/* <Button
           className='w-12 h-10 hidden sm:inline'
           color='gray'
@@ -115,7 +115,7 @@ export default function Header() {
         )}
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse>
+      <Navbar.Collapse >
         <Navbar.Link active={path === '/'} as={'div'}>
           <Link to='/'>Home</Link>
         </Navbar.Link>
