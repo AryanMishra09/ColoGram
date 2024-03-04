@@ -1,3 +1,4 @@
+import { Footer } from "flowbite-react";
 
 
 export default function About() {
@@ -10,25 +11,29 @@ export default function About() {
           </h1>
           <div className='text-md text-gray-500 text-justify flex mt-10 flex-col gap-6'>
             <p>
-              Welcome to ColoGram! This blog was created by Aryan Mishra
-              as a personal project to share his thoughts and ideas with the
-              world. Aryan is a passionate developer who loves to write about
+              Welcome to ColoGram! This is a website created by Aryan Mishra
+              as a personal project to bridge the gap between students and college. 
+              Aryan is a passionate developer who loves to learn about
               technology, coding, and everything in between.
             </p>
 
             <p>
-              On this blog, you wll find weekly articles and tutorials on topics
-              such as web development, software engineering, and programming
-              languages. Aryan is always learning and exploring new
+              On this Site, you wll find regular announcements related to the different activities going on in our college
+              such as activities and announcements relating to Academics, Examinations, Clubs and much more. Aryan is always learning and exploring new
               technologies, so be sure to check back often for new content!
             </p>
 
             <p>
               We encourage you to leave comments on our posts and engage with
               other readers. You can like comments of other users and reply to
-              them as well. We believe that a community of learners can help
+              them as well. We believe that our community can help
               each other grow and improve.
             </p>
+
+            <div className="mt-5">
+              <Footer.Copyright href="#" by="Aryan Mishra" year={new Date().getFullYear()}/>
+            </div>
+
           </div>
         </div>
       </div>

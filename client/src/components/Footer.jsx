@@ -89,10 +89,10 @@ export default function FooterComponent() {
 
                 <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
                     <Footer.Icon href="#" icon={BsFacebook}/>
-                    <Footer.Icon href="#" icon={BsInstagram}/>
-                    <Footer.Icon href="#" icon={BsTwitter}/>
-                    <Footer.Icon href="#" icon={BsGithub}/>
-                    <Footer.Icon href="#" icon={BsLinkedin}/>
+                    <Footer.Icon href="https://www.instagram.com/aryan_mishra.9/" icon={BsInstagram}/>
+                    <Footer.Icon href="https://twitter.com/AryanMi68765726" icon={BsTwitter}/>
+                    <Footer.Icon href="https://github.com/AryanMishra09" icon={BsGithub}/>
+                    <Footer.Icon href="https://www.linkedin.com/in/aryanmishra09/" icon={BsLinkedin}/>
                 </div>
             </div>
         </div>
