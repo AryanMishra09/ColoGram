@@ -37,7 +37,7 @@ export default function Home() {
         <p className=' font-normal dark:text-dimWhite text-[18px] text-black leading-[29.8px] max-w-fit md:max-w-[70%]'>
           A one stop destination for all your college updates, insights and urgent notifications. <br /> Indulge in all the plethora of activities happening around the college & create your own <span className='text-gradient'>buzz....</span>
         </p>
-        {/* <div className="absolute z-[0] w-[40%] h-[35%] bottom-0 pink__gradient" /> */}
+        {/* <div className="absolute z-[0] w-[10%] h-[50%] right-0 bottom-40 pink__gradient" /> */}
         
               <div className="absolute z-[1] w-[10%] h-[50%] rounded-full white__gradient left-40 bottom-40" />
               <div className="absolute z-[0] w-[40%] h-[50%] top-20 right-0 bottom-20 blue__gradient" />

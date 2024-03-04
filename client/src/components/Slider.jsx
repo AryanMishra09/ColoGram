@@ -22,8 +22,13 @@ export default function Slider() {
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
         >
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image6.png" alt="" /></SwiperSlide>
             <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../image2.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image10.jpg" alt="" /></SwiperSlide>
             <SwiperSlide><img className=" rounded-lg w-[100%] h-[100%] object-contain" src="../Image1.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image7.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../image5.jpg" alt="" /></SwiperSlide>
+            <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image8.jpg" alt="" /></SwiperSlide>
             <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image3.jpg" alt="" /></SwiperSlide>
             <SwiperSlide><img className="rounded-lg w-[100%] h-[100%] object-contain" src="../Image4.jpg" alt="" /></SwiperSlide>
         </Swiper>

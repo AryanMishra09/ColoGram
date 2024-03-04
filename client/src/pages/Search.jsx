@@ -147,7 +147,7 @@ export default function Search() {
         <h1 className='text-3xl text-center pb-5 font-semibold sm:border-b-2 border-teal-400 rounded-3xl px-10 mt-5 '>
           Announcements
         </h1>
-        <div className='p-10 md:px-[13%] md:py-10 flex flex-wrap gap-10 mx-auto justify-center'>
+        <div className='p-10 lg:px-[13%] md:py-10 flex mt-5 flex-wrap gap-8 md:gap-14 mx-auto justify-center'>
           {!loading && posts.length === 0 && (
             <p className='text-xl text-gray-500'>No posts found.</p>
           )}
