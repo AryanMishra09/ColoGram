@@ -33,6 +33,9 @@ export default function About() {
             <div className="mt-5">
               <Footer.Copyright href="#" by="Aryan Mishra" year={new Date().getFullYear()}/>
             </div>
+            <div className="flex justify-center overflow-auto pt-8">
+              <img src="../WhatsApp Image 2023-09-09 at 17.59.44.jpg" alt="" className="w-[40%] h-[60%] rounded-xl shadow-2xl hover:-translate-y-6  self-center object-contain" />
+            </div>
 
           </div>
         </div>
