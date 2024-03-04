@@ -13,6 +13,8 @@ export default function SignUp() {
 
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const [successMessage, setSuccessMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,6 +32,7 @@ export default function SignUp() {
     try {
       setLoading(true);
       setErrorMessage(null);
+      setSuccessMessage("");
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {"Content-Type" : "application/json"},
@@ -39,12 +42,13 @@ export default function SignUp() {
       console.log( data);
       
       if(data.success === false){
+        setLoading(false);
         return setErrorMessage(data.message);
       }
-      setLoading(false);
       if(res.ok){
-        navigate("/sign-in");
+        setSuccessMessage(data.message);
       }
+      setLoading(false);
     } catch (error) {
       setErrorMessage(error.message);
       setLoading(false);
@@ -134,6 +138,21 @@ export default function SignUp() {
               <Alert className="mt-5" color="failure">
                 {errorMessage}
               </Alert>
+            )
+          }
+          {
+            successMessage && (
+              <>
+                <Alert className="mt-5" color="success">
+                  {successMessage}
+                </Alert>
+                <div className="mt-3 text-center hover:underline hover:cursor-pointer">
+                  <Link to="https://www.google.com/intl/en_in/gmail/about/" className="text-blue-500 mt-5 justify-center">
+                    Log in to Gmail
+                  </Link>
+                </div>
+                
+              </>
             )
           }
 

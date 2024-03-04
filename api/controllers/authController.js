@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+import SendVerifyEmail from "../utils/MailingService.js";
 
 // for signing up a user 
 export const signup = async(req, res, next) => {
@@ -12,20 +13,65 @@ export const signup = async(req, res, next) => {
 
     // hashing password 
     const hashpassword = bcryptjs.hashSync(password, 10);
-
+    const token = Math.floor(100000 + Math.random() * 900000);
     const newUser = new User({
         username,
         email,
         password: hashpassword,
+        token,
     });
     
     try {
         await newUser.save();
-        res.json("Signup is successfull");
+        SendVerifyEmail(newUser.username, newUser.email, token);
+        res.json({
+            success: true,
+            message: "Registration Successfull! An Email Verification Link has been sent to your registered mail. Verify by clicking on it."
+        });
     } catch (error) {
         next(error);
     }
 };
+
+//verify user email:
+export const verifyEmail = async(req, res, next)=>{
+    try {
+      const {token, email} = req.query;
+      const user = await User.findOne({ email: email });
+      if(!user){
+        return next(errorHandler(405, "Yoy are not registered on our Site! Please Register First."))
+      }
+    const validUser = await User.findOne({token});
+    if(!validUser){
+      const user = await User.updateOne(
+        {email},
+        {$set: {token:""}},
+        {new:true}
+      );
+      return next(errorHandler(403, 'Invalid OTP Entered. You have to verify again'));
+    }else{
+      const user = await User.findByIdAndUpdate(
+        {
+          _id: validUser._id
+        },
+        {
+          $set: {
+            token:"",
+            isverified: true,
+          }
+        },
+        {new:true}
+      );
+      return res.status(200).json({
+        success: true,
+        message: "Your Account has been verified Successfully! Please Login",
+      });
+    }
+    } catch (error) {
+      next(error);
+    }
+    
+  }
 
 // for sigining in a user: 
 export const signin = async(req, res, next) => {
@@ -40,6 +86,9 @@ export const signin = async(req, res, next) => {
         if(!validUser){
            return  next(errorHandler(404, "User not Found!"));
         }
+        if(!validUser.isverified){
+            return  next(errorHandler(403, "Please Verify your Email!"));
+         }
         const validPassword = bcryptjs.compareSync(password, validUser.password);
         if(!validPassword){
             return next(errorHandler(400, "Invalid password"));

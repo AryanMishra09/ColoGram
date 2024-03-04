@@ -15,6 +15,7 @@ import UpdatePost from './pages/UpdatePost';
 import PostPage from './pages/PostPage';
 import Search from './pages/Search';
 import ScrollToTop from './components/ScrollToTop';
+import VerifyEmail from './components/VerifyEmail';
 
 export default function App() {
  
@@ -48,6 +49,8 @@ export default function App() {
         <Route path='/sign-in' element={<SignIn/>} />
 
         <Route path='/sign-up' element={<SignUp/>} />
+
+        <Route path='/verify' element={<VerifyEmail/>} />
 
         <Route path='/search' element={<Search />} />
 

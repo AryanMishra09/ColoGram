@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 export default function Header() {
 
     const {currentUser} = useSelector((state) => state.user);
-    console.log("Header: ", currentUser);
 
     // const { theme } = useSelector((state) => state.theme);
     const [searchTerm, setSearchTerm] = useState('');

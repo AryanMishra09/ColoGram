@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { signInFailure, signInStart, signInSuccess } from "../redux/user/userSlice";
@@ -10,7 +10,7 @@ import OAuth from "../components/OAuth";
 export default function SignIn() {
   const dispatch = useDispatch();
 
-  const {loading, error: errorMessage} = useSelector((state) => state.user);
+  const {loading, error} = useSelector((state) => state.user);
 
   const [formData, setFormData] = useState({})
 
@@ -64,7 +64,7 @@ export default function SignIn() {
           </Link>
 
           <p className="text-md text-justify text-dimWhite max-w-[80%] mt-5">
-            This is a Blog Website. You can sign in with your email and password or with Google.
+            This is a Announcement Website. You can sign in with your email and password or with Google.
           </p>
         
         </div>
@@ -119,9 +119,9 @@ export default function SignIn() {
           </div>
 
           {
-            errorMessage && (
+            error && (
               <Alert className="mt-5" color="failure">
-                {errorMessage}
+                {error}
               </Alert>
             )
           }
