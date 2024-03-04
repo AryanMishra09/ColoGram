@@ -119,13 +119,13 @@ export default function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse >
-        <Navbar.Link active={path === '/'} as={'div'}>
+        <Navbar.Link color='red' className='rounded-xl m-1' active={path === '/'} as={'div'}>
           <Link to='/'>Home</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === '/about'} as={'div'}>
+        <Navbar.Link className='rounded-xl m-1' active={path === '/about'} as={'div'}>
           <Link to='/about'>About</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === '/search'} as={'div'}>
+        <Navbar.Link className='rounded-xl m-1' active={path === '/search'} as={'div'}>
           <Link to='/search'>Announcements</Link>
         </Navbar.Link>
       </Navbar.Collapse>
