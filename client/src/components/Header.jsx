@@ -93,17 +93,21 @@ export default function Header() {
               <Avatar alt='user' img={currentUser.profilePicture} rounded className='h-10 w-16 object-cover' />
             }
           >
-            <Dropdown.Header>
+            <Dropdown.Header className='rounded-lg shadow-xl'>
               <span className='block text-sm'>@{currentUser.username}</span>
               <span className='block text-sm font-medium truncate'>
                 {currentUser.email}
               </span>
             </Dropdown.Header>
             <Link to={'/dashboard?tab=profile'}>
-              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item className='rounded-lg'>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+            <Link to={'https://web.mitsgwalior.in/'} target='_blank' rel='noopener noreferrer'>
+              <Dropdown.Item className='rounded-lg'>MITS Gwalior</Dropdown.Item>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={handleSignout} className='rounded-lg'>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to='/sign-in'>
